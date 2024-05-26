@@ -1,8 +1,13 @@
 package com.app.mapper;
 
+
+import org.springframework.stereotype.Component;
+
 import com.app.dto.UserDto;
 import com.app.entity.User;
 
+
+@Component
 public class UserMapper {
 
 	public UserDto userMapper(User user) {
@@ -20,7 +25,6 @@ public class UserMapper {
 	public User userUnMapper(UserDto userDto) {
 
 		User user = new User();
-		user.setId(userDto.getId());
 		user.setUserName(userDto.getName());
 		user.setAddress(userDto.getUserAddress());
 		user.setPhone(userDto.getUserPhone());

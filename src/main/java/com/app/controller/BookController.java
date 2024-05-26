@@ -36,18 +36,18 @@ public class BookController {
 		return userService.getUserById(id);
 	}
 	
-	@PostMapping("/")
+	@PostMapping
 	public UserDto addUser (@RequestBody UserDto userDto) {
 		return userService.CreateUser(userDto);
 	}
 	
-	@PutMapping("/")
+	@PutMapping
 	public UserDto updateUserData(@RequestBody UserDto userDto) {
 		return  userService.updateUser(userDto);
 	}
 	
 	@DeleteMapping("/{id}")
-	public String deleteUser (Long id) {
+	public String deleteUser (@PathVariable Long id) {
 		return userService.deleteUserById(id);
 	}
 	
