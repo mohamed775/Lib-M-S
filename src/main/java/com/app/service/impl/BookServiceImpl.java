@@ -30,9 +30,6 @@ public class BookServiceImpl implements BookService {
 	private BookMapper mapper ;
 	
 	
-	@Autowired
-	private UserMapper userMapper ; 
-	
 	
 	
 	@Override
@@ -117,7 +114,7 @@ public class BookServiceImpl implements BookService {
 	
 	
 	@Override
-	public BookDto returnBook(Long userId, Long bookId) {
+	public BookDto returnBook( Long bookId) {
 
         BookDto bookDto = getBookById(bookId).orElseThrow(()-> new RuntimeException("book with id : " + bookId + " not found " ));
 		

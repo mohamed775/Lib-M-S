@@ -61,8 +61,8 @@ public class BookController {
 	
 	
 	@PostMapping("/{userId}/return/{bookId}")
-	public BookDto returnBook(@PathVariable Long userId ,@PathVariable Long bookId) {
-		return bookService.returnBook(userId, bookId);
+	public BookDto returnBook(@PathVariable Long bookId) {
+		return bookService.returnBook( bookId);
 	}
 
 	

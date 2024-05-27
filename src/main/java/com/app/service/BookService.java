@@ -19,6 +19,6 @@ public interface BookService {
 	
 	public BookDto borrowBook (Long userId , Long bookId);
 
-	public BookDto returnBook (Long userId , Long bookId);
+	public BookDto returnBook ( Long bookId);
 
 }
