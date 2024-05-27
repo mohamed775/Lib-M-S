@@ -1,7 +1,9 @@
 package com.app.controller;
 
+
+
+
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,44 +14,57 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.dto.UserDto;
-import com.app.service.UserService;
+import com.app.dto.BookDto;
+import com.app.service.BookService;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/book")
 @RequiredArgsConstructor
 public class BookController {
 
-	private final UserService  userService ;
+	
+	private final  BookService  bookService ;
 	
 	
 	@GetMapping
-	public List<UserDto> getUsers(){
-		return userService.getAllUsers();
+	public List<BookDto> getAllBooks(){
+		return  bookService.getAllBooks();
 	}
 	
-	
 	@GetMapping("/{id}")
-	public Optional<UserDto> getUserDetails(@PathVariable Long id) {
-		return userService.getUserById(id);
+	public BookDto getBookById(@PathVariable Long id) {
+		return bookService.getBookById(id).get();
 	}
 	
 	@PostMapping
-	public UserDto addUser (@RequestBody UserDto userDto) {
-		return userService.CreateUser(userDto);
+	public BookDto addBook(@RequestBody BookDto bookDto) {
+		return bookService.CreateBook(bookDto);
 	}
 	
 	@PutMapping
-	public UserDto updateUserData(@RequestBody UserDto userDto) {
-		return  userService.updateUser(userDto);
+	public BookDto updateBook(@RequestBody BookDto bookDto) {
+		return bookService.updateBook(bookDto);
 	}
 	
 	@DeleteMapping("/{id}")
-	public String deleteUser (@PathVariable Long id) {
-		return userService.deleteUserById(id);
+	public String deleteBook (@PathVariable Long id) {
+		return bookService.deleteBookById(id);
 	}
+	
+	
+	@PostMapping("/{userId}/borrow/{bookId}")
+	public BookDto borrowBook(@PathVariable Long userId ,@PathVariable Long bookId) {
+		return bookService.borrowBook(userId, bookId);
+	}
+	
+	
+	@PostMapping("/{userId}/return/{bookId}")
+	public BookDto returnBook(@PathVariable Long userId ,@PathVariable Long bookId) {
+		return bookService.returnBook(userId, bookId);
+	}
+
 	
 	
 	

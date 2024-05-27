@@ -17,8 +17,8 @@ public interface BookService {
 
 	public String deleteBookById(Long id);
 	
-	public BookDto borrowBook (Long id , BookDto bookDto);
+	public BookDto borrowBook (Long userId , Long bookId);
 
-	public BookDto returnBook (Long id , BookDto bookDto);
+	public BookDto returnBook (Long userId , Long bookId);
 
 }

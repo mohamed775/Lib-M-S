@@ -1,9 +1,10 @@
 package com.app.dto;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.app.entity.User;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,6 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookDto {
@@ -23,7 +23,10 @@ public class BookDto {
 
 	private String bookAuther;
 
-	private int BookRate;
+	private int bookRate;
+	
+	@Value("false")
+	private boolean isBorrowed ;
 	
 	private User bookBorrowedBy ;
 
